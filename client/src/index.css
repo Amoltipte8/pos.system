@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 220 14% 25%; /* #2D3748 */
+  --muted: 210 40% 96%; /* #F7FAFC */
+  --muted-foreground: 215 14% 44%; /* #718096 */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 220 14% 25%; /* #2D3748 */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 220 14% 25%; /* #2D3748 */
+  --border: 220 13% 91%; /* #E2E8F0 */
+  --input: 220 13% 91%; /* #E2E8F0 */
+  --primary: 207 90% 54%; /* #1976D2 */
+  --primary-foreground: 210 40% 98%; /* #F7FAFC */
+  --secondary: 210 40% 96%; /* #F7FAFC */
+  --secondary-foreground: 220 14% 25%; /* #2D3748 */
+  --accent: 210 40% 96%; /* #F7FAFC */
+  --accent-foreground: 220 14% 25%; /* #2D3748 */
+  --destructive: 0 84% 60%; /* #E53E3E */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --ring: 207 90% 54%; /* #1976D2 */
+  --radius: 0.5rem;
+  --chart-1: 207 90% 54%; /* #1976D2 */
+  --chart-2: 142 76% 36%; /* #38A169 */
+  --chart-3: 28 100% 53%; /* #FF9800 */
+  --chart-4: 271 81% 56%; /* #9333EA */
+  --chart-5: 0 84% 60%; /* #E53E3E */
+  --sidebar-background: 0 0% 100%; /* #FFFFFF */
+  --sidebar-foreground: 220 14% 25%; /* #2D3748 */
+  --sidebar-primary: 207 90% 54%; /* #1976D2 */
+  --sidebar-primary-foreground: 210 40% 98%; /* #F7FAFC */
+  --sidebar-accent: 210 40% 96%; /* #F7FAFC */
+  --sidebar-accent-foreground: 220 14% 25%; /* #2D3748 */
+  --sidebar-border: 220 13% 91%; /* #E2E8F0 */
+  --sidebar-ring: 207 90% 54%; /* #1976D2 */
+}
+
+.dark {
+  --background: 222 84% 5%; /* #0A0F1C */
+  --foreground: 210 40% 98%; /* #F7FAFC */
+  --muted: 217 33% 17%; /* #1A202C */
+  --muted-foreground: 215 20% 65%; /* #A0AEC0 */
+  --popover: 222 84% 5%; /* #0A0F1C */
+  --popover-foreground: 210 40% 98%; /* #F7FAFC */
+  --card: 222 84% 5%; /* #0A0F1C */
+  --card-foreground: 210 40% 98%; /* #F7FAFC */
+  --border: 217 33% 17%; /* #1A202C */
+  --input: 217 33% 17%; /* #1A202C */
+  --primary: 207 90% 54%; /* #1976D2 */
+  --primary-foreground: 210 40% 98%; /* #F7FAFC */
+  --secondary: 217 33% 17%; /* #1A202C */
+  --secondary-foreground: 210 40% 98%; /* #F7FAFC */
+  --accent: 217 33% 17%; /* #1A202C */
+  --accent-foreground: 210 40% 98%; /* #F7FAFC */
+  --destructive: 0 63% 31%; /* #991B1B */
+  --destructive-foreground: 210 40% 98%; /* #F7FAFC */
+  --ring: 207 90% 54%; /* #1976D2 */
+  --chart-1: 207 90% 54%; /* #1976D2 */
+  --chart-2: 142 76% 36%; /* #38A169 */
+  --chart-3: 28 100% 53%; /* #FF9800 */
+  --chart-4: 271 81% 56%; /* #9333EA */
+  --chart-5: 0 84% 60%; /* #E53E3E */
+  --sidebar-background: 222 84% 5%; /* #0A0F1C */
+  --sidebar-foreground: 210 40% 98%; /* #F7FAFC */
+  --sidebar-primary: 207 90% 54%; /* #1976D2 */
+  --sidebar-primary-foreground: 210 40% 98%; /* #F7FAFC */
+  --sidebar-accent: 217 33% 17%; /* #1A202C */
+  --sidebar-accent-foreground: 210 40% 98%; /* #F7FAFC */
+  --sidebar-border: 217 33% 17%; /* #1A202C */
+  --sidebar-ring: 207 90% 54%; /* #1976D2 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  }
+
+  /* Touch-friendly targets for mobile */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Card shadows */
+  .card-shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Sidebar transitions */
+  .sidebar-transition {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-ring;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-ring;
+  }
+
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-ring;
+  }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus-ring;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:scale-[1.02];
+  }
+
+  /* Status badges */
+  .status-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300;
+  }
+
+  .status-warning {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300;
+  }
+
+  .status-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300;
+  }
+
+  .status-info {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300;
+  }
+
+  /* POS specific styles */
+  .pos-item {
+    @apply p-3 border border-border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer;
+  }
+
+  .pos-cart-item {
+    @apply flex items-center justify-between p-3 border border-border rounded-lg;
+  }
+
+  .low-stock-alert {
+    @apply border-destructive bg-destructive/5 text-destructive;
+  }
+
+  /* Responsive grid utilities */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .print-only {
+      display: block !important;
+    }
+    
+    body {
+      @apply text-black bg-white;
+    }
+    
+    .print-receipt {
+      @apply max-w-sm mx-auto p-4;
+    }
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in {
+    animation: slideIn 0.3s ease-in-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Custom utilities for POS interface */
+@layer utilities {
+  .text-currency {
+    @apply font-mono font-semibold;
+  }
+
+  .receipt-text {
+    @apply font-mono text-xs;
+  }
+
+  .mobile-touch {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--accent)) 100%);
+  }
+}
